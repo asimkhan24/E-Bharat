@@ -7,6 +7,7 @@ import { deleteFromCart } from "../../redux/CartSlice";
 import { toast } from "react-toastify";
 import { addDoc, collection } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
+import CartEmpty from "../../components/cartempty/CartEmpty";
 
 function Cart() {
   const context = useContext(myContext);
@@ -123,7 +124,9 @@ function Cart() {
 
   return (
     <Layout>
-      <div
+      {
+        !cartItems.length? <CartEmpty/>:(
+          <div
         className="h-screen bg-gray-100 pt-5 mb-[60%] "
         style={{
           backgroundColor: mode === "dark" ? "#282c34" : "",
@@ -262,6 +265,8 @@ function Cart() {
           </div>
         </div>
       </div>
+        )
+      }
     </Layout>
   );
 }

@@ -44,7 +44,7 @@ function Order() {
         </>)
         :
         (
-          <h2 className=' text-center tex-2xl' style={{ color: mode === "dark" ? "white" : "" }}>Not Order</h2>
+          <h2 className=' text-center tex-2xl' style={{ color: mode === "dark" ? "white" : "" }}>No Orders</h2>
         )
 
       }
