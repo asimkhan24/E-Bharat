@@ -16,6 +16,8 @@ import {
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { toast } from "react-toastify";
 
+
+
 const myState = (props) => {
   const [mode, setMode] = useState("light");
   const [loading, setLoading] = useState(false);
@@ -33,6 +35,7 @@ const myState = (props) => {
     }),
   });
 
+
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
@@ -42,6 +45,7 @@ const myState = (props) => {
       document.body.style.backgroundColor = "white";
     }
   };
+
 
   // ********* Add Product Section  **********
   const addProduct = async () => {
@@ -60,7 +64,7 @@ const myState = (props) => {
       await addDoc(productRef, products);
       toast.success("Product Added successfully");
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        window.location.href = '/dashboard'
       }, 800);
       getProductData();
       setLoading(false);

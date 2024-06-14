@@ -5,11 +5,12 @@ import Layout from "../../../components/layout/Layout";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { FaUser, FaCartPlus } from "react-icons/fa";
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function DashboardTab() {
   const context = useContext(myContext);
   const { mode, product, edithandle, deleteProduct, order, user } = context;
+  const navigate = useNavigate()
 
   // console.log(product)
   let [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,8 @@ function DashboardTab() {
   }
 
   const add = () => {
-    window.location.href = "/addproduct";
+    // window.location.href = "/addproduct";
+    navigate('/addproduct')
   };
   return (
     <>
@@ -298,7 +300,7 @@ function DashboardTab() {
                           price,
                         } = item;
                         return (
-                          <tbody>
+                          <tbody key={index}>
                             <tr
                               className="bg-gray-50 border-b  dark:border-gray-700"
                               style={{
@@ -476,6 +478,12 @@ function DashboardTab() {
                             style={{ color: mode === "dark" ? "white" : "" }}
                           >
                             {uid}
+                          </td>
+                          <td
+                            className="px-6 py-4 text-black "
+                            style={{ color: mode === "dark" ? "white" : "" }}
+                          >
+                            {date}
                           </td>
                         </tr>
                       </tbody>
